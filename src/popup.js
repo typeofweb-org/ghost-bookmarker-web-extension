@@ -1,3 +1,6 @@
+if (typeof browser === "undefined") {
+  var browser = chrome;
+}
 import * as Sentry from "@sentry/browser";
 import { createPostUrl } from "./lib/create-post-url";
 import "./style.css";
