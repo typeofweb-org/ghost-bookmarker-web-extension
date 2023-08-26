@@ -1,0 +1,24 @@
+{
+  "name": "ghost-bookmarker",
+  "version": "1.0.0",
+  "description": "Reverse engineered Ghost Bookmarker chrome extension",
+  "scripts": {},
+  "keywords": [],
+  "author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "@sentry/browser": "7.49.0",
+    "jsrsasign": "10.8.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "0.5.3",
+    "autoprefixer": "10.4.15",
+    "postcss": "8.4.28",
+    "prettier": "3.0.2",
+    "rimraf": "5.0.1",
+    "tailwindcss": "3.3.2"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}
