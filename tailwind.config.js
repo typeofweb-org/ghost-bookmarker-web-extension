@@ -16,6 +16,9 @@ module.exports = {
           "monospace",
         ],
       },
+      colors: {
+        base: "rgb(21 23 26 / <alpha-value>)",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
