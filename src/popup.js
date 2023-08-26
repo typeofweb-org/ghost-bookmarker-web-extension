@@ -1,7 +1,6 @@
 if (typeof browser === "undefined") {
   var browser = chrome;
 }
-import * as Sentry from "@sentry/browser";
 import { createPostUrl } from "./lib/create-post-url";
 import "./style.css";
 
@@ -14,25 +13,6 @@ const successNotification = document.getElementById("success");
 const errorNotification = document.getElementById("error");
 
 let link;
-
-const environment = process.env.NODE_ENV ?? "production";
-const release = process.env.npm_package_version ?? null;
-const dsn = null;
-
-// Sentry is blocked by some content blockers
-if (typeof Sentry !== "undefined" && dsn) {
-  Sentry.onLoad(function () {
-    Sentry.init({
-      dsn,
-      environment,
-      release,
-      tracesSampleRate: environment === "production" ? 0.2 : 1.0,
-      initialScope: {
-        tags: { section: "popup", app: "bookmarker" },
-      },
-    });
-  });
-}
 
 /**
  * Asynchronously sets the URL of the currently active tab in the current window to a global variable (link)

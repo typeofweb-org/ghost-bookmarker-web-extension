@@ -1,7 +1,6 @@
 if (typeof browser === "undefined") {
   var browser = chrome;
 }
-import * as Sentry from "@sentry/browser";
 import {
   getFriendlyError,
   sendMessageToPopup,
@@ -14,25 +13,6 @@ import { createPost } from "./lib/create-post";
 import { hasUrlPermission } from "./lib/permission-utils";
 import { createPostUrl } from "./lib/create-post-url";
 import { addBookmarkViaContextMenuOrKeyboard } from "./lib/add-bookmark-via-menu-or-keyboard";
-
-const environment = process.env.NODE_ENV ?? "production";
-const release = process.env.npm_package_version ?? null;
-const dsn = null;
-
-// Sentry is blocked by some content blockers
-if (typeof Sentry !== "undefined" && dsn) {
-  Sentry.onLoad(function () {
-    Sentry.init({
-      dsn,
-      environment,
-      release,
-      tracesSampleRate: environment === "production" ? 0.2 : 1.0,
-      initialScope: {
-        tags: { section: "background", app: "bookmarker" },
-      },
-    });
-  });
-}
 
 browser.runtime.onInstalled.addListener((details) => {
   if (details.reason === "install") {
@@ -153,7 +133,6 @@ async function updateOrCreatePost({
       }
     }
   } catch (error) {
-    Sentry.captureException(error);
     const errorMsg = getFriendlyError(
       error?.message,
       "Error trying to update or create post."
@@ -212,10 +191,6 @@ browser.commands.onCommand.addListener((command) => {
             { pageUrl: currentTab.url, selectionText },
             updateOrCreatePost
           );
-        })
-        .catch((error) => {
-          Sentry.captureException(error);
-          throw Error(error);
         });
     });
   }

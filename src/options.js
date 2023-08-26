@@ -1,33 +1,12 @@
 if (typeof browser === "undefined") {
   var browser = chrome;
 }
-import * as Sentry from "@sentry/browser";
 import "./style.css";
 import { showNotification, hideNotification } from "./lib/notifications";
 import { removeUrlPermission, hasUrlPermission } from "./lib/permission-utils";
 import { createJWT } from "./lib/create-jwt";
 import { fetchPosts } from "./lib/fetch-posts";
 import { getError } from "./lib/error-handling";
-
-const environment = process.env.NODE_ENV ?? "production";
-const release = process.env.npm_package_version ?? null;
-const dsn = null;
-
-// Sentry is blocked by some content blockers
-if (typeof Sentry !== "undefined" && dsn) {
-  Sentry.onLoad(function () {
-    Sentry.init({
-      dsn,
-      integrations: [new Sentry.BrowserTracing()],
-      environment,
-      release,
-      tracesSampleRate: environment === "production" ? 0.2 : 1.0,
-      initialScope: {
-        tags: { section: "options", app: "bookmarker" },
-      },
-    });
-  });
-}
 
 // see if we have saved Options, if so, populate the form with the saved values
 browser.storage.sync.get(["apiUrl", "apiKey"], (result) => {
@@ -202,7 +181,6 @@ const validateApiUrl = async (urlToTest) => {
     if (error?.message.match(/failed to fetch/gim)) {
       return { error: getError("FAILED_REQUEST") };
     }
-    Sentry.captureException(error);
     return { error };
   }
 };
@@ -264,7 +242,6 @@ const saveOptions = async (e) => {
     formError.classList.remove("invisible");
     document.body.classList.remove("loading");
     submitButton.disabled = false;
-    Sentry.captureException(error);
     return;
   }
 };
