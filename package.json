@@ -7,10 +7,16 @@
   },
   "keywords": [],
   "author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
+  "contributors": [
+    {
+      "name": "TryGhost",
+      "url": "https://github.com/TryGhost"
+    },
+    "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)"
+  ],
   "license": "MIT",
   "files": [
     "dist",
-    "pages",
     "icons",
     "manifest.json"
   ],
