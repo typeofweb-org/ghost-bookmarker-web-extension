@@ -11,36 +11,36 @@
     @exports addBookmarkViaContextMenuOrKeyboard
     */
 export function addBookmarkViaContextMenuOrKeyboard(info, updateOrCreatePost) {
-	chrome.storage.sync.get(["apiUrl", "apiKey"], async (result) => {
-		if (!result.apiUrl || !result.apiKey) {
-			chrome.runtime.openOptionsPage();
-			return;
-		} else {
-			const { apiUrl, apiKey } = result;
-			const link = info.pageUrl;
-			const formattedLink = new URL(link);
-			try {
-				const uuid = await updateOrCreatePost({
-					link,
-					note: info.selectionText || "",
-					apiUrl,
-					apiKey,
-					isContextMenu: true,
-				});
-				chrome.notifications.create(uuid, {
-					type: "basic",
-					iconUrl: "/icons/logo-48.png",
-					title: "Bookmark added to Ghost!",
-					message: `Link saved from ${formattedLink.hostname}`,
-				});
-			} catch (error) {
-				chrome.notifications.create("error", {
-					type: "basic",
-					iconUrl: "/icons/logo-48.png",
-					title: "Problem adding bookmark",
-					message: error.message,
-				});
-			}
-		}
-	});
+  browser.storage.sync.get(["apiUrl", "apiKey"], async (result) => {
+    if (!result.apiUrl || !result.apiKey) {
+      browser.runtime.openOptionsPage();
+      return;
+    } else {
+      const { apiUrl, apiKey } = result;
+      const link = info.pageUrl;
+      const formattedLink = new URL(link);
+      try {
+        const uuid = await updateOrCreatePost({
+          link,
+          note: info.selectionText || "",
+          apiUrl,
+          apiKey,
+          isContextMenu: true,
+        });
+        browser.notifications.create(uuid, {
+          type: "basic",
+          iconUrl: "/icons/logo-48.png",
+          title: "Bookmark added to Ghost!",
+          message: `Link saved from ${formattedLink.hostname}`,
+        });
+      } catch (error) {
+        browser.notifications.create("error", {
+          type: "basic",
+          iconUrl: "/icons/logo-48.png",
+          title: "Problem adding bookmark",
+          message: error.message,
+        });
+      }
+    }
+  });
 }

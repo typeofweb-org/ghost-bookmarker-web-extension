@@ -3,25 +3,25 @@
  * @returns {object}
  */
 export const getLexicalRoot = () => {
-	return {
-		root: {
-			children: [
-				{
-					children: [],
-					direction: null,
-					format: "",
-					indent: 0,
-					type: "paragraph",
-					version: 1,
-				},
-			],
-			direction: null,
-			format: "",
-			indent: 0,
-			type: "root",
-			version: 1,
-		},
-	};
+  return {
+    root: {
+      children: [
+        {
+          children: [],
+          direction: null,
+          format: "",
+          indent: 0,
+          type: "paragraph",
+          version: 1,
+        },
+      ],
+      direction: null,
+      format: "",
+      indent: 0,
+      type: "root",
+      version: 1,
+    },
+  };
 };
 
 /**
@@ -30,37 +30,37 @@ export const getLexicalRoot = () => {
  * @returns {object}
  */
 export const getLinkNode = (link) => {
-	return {
-		children: [
-			{
-				children: [
-					{
-						detail: 0,
-						format: 0,
-						mode: "normal",
-						style: "",
-						text: link,
-						type: "text",
-						version: 1,
-					},
-				],
-				direction: "ltr",
-				format: "",
-				indent: 0,
-				type: "link",
-				version: 1,
-				rel: null,
-				target: null,
-				title: null,
-				url: link,
-			},
-		],
-		direction: "ltr",
-		format: "",
-		indent: 0,
-		type: "paragraph",
-		version: 1,
-	};
+  return {
+    children: [
+      {
+        children: [
+          {
+            detail: 0,
+            format: 0,
+            mode: "normal",
+            style: "",
+            text: link,
+            type: "text",
+            version: 1,
+          },
+        ],
+        direction: "ltr",
+        format: "",
+        indent: 0,
+        type: "link",
+        version: 1,
+        rel: null,
+        target: null,
+        title: null,
+        url: link,
+      },
+    ],
+    direction: "ltr",
+    format: "",
+    indent: 0,
+    type: "paragraph",
+    version: 1,
+  };
 };
 
 /**
@@ -76,29 +76,29 @@ export const getLinkNode = (link) => {
  * @returns {object}
  */
 export const getBookmarkNode = ({
-	url = "",
-	icon = "",
-	title = "",
-	description = "",
-	author = "",
-	publisher = "",
-	thumbnail = "",
-	caption = "",
+  url = "",
+  icon = "",
+  title = "",
+  description = "",
+  author = "",
+  publisher = "",
+  thumbnail = "",
+  caption = "",
 }) => {
-	return {
-		type: "bookmark",
-		version: 1,
-		url,
-		metadata: {
-			icon,
-			title,
-			description,
-			author,
-			publisher,
-			thumbnail,
-		},
-		caption,
-	};
+  return {
+    type: "bookmark",
+    version: 1,
+    url,
+    metadata: {
+      icon,
+      title,
+      description,
+      author,
+      publisher,
+      thumbnail,
+    },
+    caption,
+  };
 };
 
 /**
@@ -107,24 +107,24 @@ export const getBookmarkNode = ({
  * @returns {object}
  */
 export const getNoteNode = (note) => {
-	return {
-		children: [
-			{
-				detail: 0,
-				format: 0,
-				mode: "normal",
-				style: "",
-				text: note,
-				type: "text",
-				version: 1,
-			},
-		],
-		direction: "ltr",
-		format: "",
-		indent: 0,
-		type: "paragraph",
-		version: 1,
-	};
+  return {
+    children: [
+      {
+        detail: 0,
+        format: 0,
+        mode: "normal",
+        style: "",
+        text: note,
+        type: "text",
+        version: 1,
+      },
+    ],
+    direction: "ltr",
+    format: "",
+    indent: 0,
+    type: "paragraph",
+    version: 1,
+  };
 };
 
 /**
@@ -132,12 +132,12 @@ export const getNoteNode = (note) => {
  * @returns {object}
  */
 export const getEmptyNode = () => {
-	return {
-		children: [],
-		direction: "ltr",
-		format: "",
-		indent: 0,
-		type: "paragraph",
-		version: 1,
-	};
+  return {
+    children: [],
+    direction: "ltr",
+    format: "",
+    indent: 0,
+    type: "paragraph",
+    version: 1,
+  };
 };

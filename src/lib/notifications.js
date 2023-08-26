@@ -1,25 +1,25 @@
 function enterCleanup(element) {
-	element.classList.remove("ease-out", "duration-300");
-	element.classList.add("ease-in", "duration-100");
-	element.removeEventListener("transitionend", enterCleanup);
+  element.classList.remove("ease-out", "duration-300");
+  element.classList.add("ease-in", "duration-100");
+  element.removeEventListener("transitionend", enterCleanup);
 }
 
 function exitCleanup(element) {
-	element.classList.remove("ease-in", "duration-100");
-	element.classList.add("ease-out", "duration-300");
-	element.removeEventListener("transitionend", exitCleanup);
+  element.classList.remove("ease-in", "duration-100");
+  element.classList.add("ease-out", "duration-300");
+  element.removeEventListener("transitionend", exitCleanup);
 }
 
 export function hideNotification(stringOrElement) {
-	let el = stringOrElement;
+  let el = stringOrElement;
 
-	if (typeof stringOrElement === "string") {
-		el = document.getElementById(stringOrElement);
-	}
+  if (typeof stringOrElement === "string") {
+    el = document.getElementById(stringOrElement);
+  }
 
-	el.classList.add("hidden");
-	el.addEventListener("transitionend", exitCleanup.bind(null, el));
-	el.removeEventListener("click", hideNotification);
+  el.classList.add("hidden");
+  el.addEventListener("transitionend", exitCleanup.bind(null, el));
+  el.removeEventListener("click", hideNotification);
 }
 /**
  * Shows a notification element and optionally automatically closes it after a specified time.
@@ -34,15 +34,21 @@ export function hideNotification(stringOrElement) {
  * showNotification('my-notification', true);
  */
 export function showNotification(selector, selfClose = false, timer = 3000) {
-	const $notification = document.getElementById(selector);
-	const $closeButton = $notification.querySelector('[data-id="close"]');
+  const $notification = document.getElementById(selector);
+  const $closeButton = $notification.querySelector('[data-id="close"]');
 
-	$closeButton.addEventListener("click", hideNotification.bind(null, $notification));
+  $closeButton.addEventListener(
+    "click",
+    hideNotification.bind(null, $notification),
+  );
 
-	$notification.classList.remove("hidden");
-	$notification.addEventListener("transitionend", enterCleanup.bind(null, $notification));
+  $notification.classList.remove("hidden");
+  $notification.addEventListener(
+    "transitionend",
+    enterCleanup.bind(null, $notification),
+  );
 
-	if (selfClose) {
-		setTimeout(hideNotification.bind(null, $notification), timer);
-	}
+  if (selfClose) {
+    setTimeout(hideNotification.bind(null, $notification), timer);
+  }
 }

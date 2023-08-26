@@ -11,8 +11,8 @@ export const getAdminUrl = (apiUrl) => `${apiUrl}/ghost/api/admin/posts/`;
  * @returns {object}
  */
 export const getHeaders = (token) => ({
-	Authorization: `Ghost ${token}`,
-	"Content-Type": "application/json",
-	Origin: "null",
-	"Accept-Version": "v5.0",
+  Authorization: `Ghost ${token}`,
+  "Content-Type": "application/json",
+  Origin: "null",
+  "Accept-Version": "v5.0",
 });

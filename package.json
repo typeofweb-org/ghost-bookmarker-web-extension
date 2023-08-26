@@ -1,35 +1,35 @@
 {
-	"name": "ghost-bookmarker",
-	"version": "1.0.0",
-	"description": "Reverse engineered Ghost Bookmarker chrome extension",
-	"scripts": {
-		"build": "rimraf dist && vite build"
-	},
-	"keywords": [],
-	"author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
-	"license": "MIT",
-	"files": [
-		"dist",
-		"pages",
-		"icons",
-		"manifest.json"
-	],
-	"dependencies": {
-		"@sentry/browser": "7.49.0",
-		"jsrsasign": "10.8.4",
-		"typescript": "5.2.2"
-	},
-	"devDependencies": {
-		"@tailwindcss/forms": "0.5.3",
-		"autoprefixer": "10.4.15",
-		"postcss": "8.4.28",
-		"prettier": "3.0.2",
-		"prettier-plugin-tailwindcss": "0.5.3",
-		"rimraf": "5.0.1",
-		"tailwindcss": "3.3.2",
-		"vite": "4.4.9"
-	},
-	"browserslist": [
-		"defaults"
-	]
+  "name": "ghost-bookmarker",
+  "version": "1.0.0",
+  "description": "Reverse engineered Ghost Bookmarker chrome extension",
+  "scripts": {
+    "build": "rimraf dist && vite build"
+  },
+  "keywords": [],
+  "author": "Michał Miszczyszyn <michal@mmiszy.pl> (https://typeofweb.com/)",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "pages",
+    "icons",
+    "manifest.json"
+  ],
+  "dependencies": {
+    "@sentry/browser": "7.49.0",
+    "jsrsasign": "10.8.4",
+    "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "0.5.3",
+    "autoprefixer": "10.4.15",
+    "postcss": "8.4.28",
+    "prettier": "3.0.2",
+    "prettier-plugin-tailwindcss": "0.5.3",
+    "rimraf": "5.0.1",
+    "tailwindcss": "3.3.2",
+    "vite": "4.4.9"
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

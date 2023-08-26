@@ -22,26 +22,26 @@
  *   }
  */
 export async function getOembedData({ link, apiUrl, token }) {
-	try {
-		const url = `${apiUrl}/ghost/api/admin/oembed/`;
-		const headers = {
-			Authorization: `Ghost ${token}`,
-			"Content-Type": "application/json",
-			Origin: "null",
-			"Accept-Version": "v5.0",
-		};
+  try {
+    const url = `${apiUrl}/ghost/api/admin/oembed/`;
+    const headers = {
+      Authorization: `Ghost ${token}`,
+      "Content-Type": "application/json",
+      Origin: "null",
+      "Accept-Version": "v5.0",
+    };
 
-		const requestUrl = new URL(url);
+    const requestUrl = new URL(url);
 
-		// use type and url as query parameters
-		requestUrl.searchParams.append("type", "bookmark");
-		requestUrl.searchParams.append("url", link);
-		const response = await fetch(requestUrl, { headers });
-		const oembed = await response.json();
+    // use type and url as query parameters
+    requestUrl.searchParams.append("type", "bookmark");
+    requestUrl.searchParams.append("url", link);
+    const response = await fetch(requestUrl, { headers });
+    const oembed = await response.json();
 
-		return oembed;
-	} catch (e) {
-		// noop
-		return null;
-	}
+    return oembed;
+  } catch (e) {
+    // noop
+    return null;
+  }
 }
